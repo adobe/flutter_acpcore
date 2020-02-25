@@ -19,6 +19,8 @@
 
 Install instructions for this package can be found [here](https://pub.dev/packages/flutter_acpcore#-installing-tab-).
 
+> Note: After you have installed the SDK, don't forget to run `pod install` in your `ios` directory to link the libraries to your Xcode project.
+
 After you have installed Core, you can install additional AEP Flutter extensions.
 
 | Extension    | Package                                            |
