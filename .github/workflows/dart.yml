@@ -6,14 +6,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-
       - uses: actions/setup-java@v1
         with:
           java-version: '12.x'
       - uses: subosito/flutter-action@v1
         with:
-          flutter-version: '1.12.13+hotfix.8'
-          channel: 'stable'
+          flutter-version: '1.12.x'
 
       - name: Install dependencies
         working-directory: ./example
@@ -34,7 +32,7 @@ jobs:
           java-version: '12.x'
       - uses: subosito/flutter-action@v1
         with:
-          flutter-version: '1.7.8+hotfix.4'
+          flutter-version: '1.12.x'
 
       - name: Install dependencies
         working-directory: ./example
@@ -59,7 +57,7 @@ jobs:
           java-version: '12.x'
       - uses: subosito/flutter-action@v1
         with:
-          flutter-version: '1.7.8+hotfix.4'
+          flutter-version: '1.12.x'
 
       - name: Install dependencies
         run: flutter pub get
