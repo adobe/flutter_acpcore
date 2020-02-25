@@ -8,7 +8,7 @@
 
 ## Contents
 - [Installation](#installation)
-- [Next Steps](#next-steps)
+	- [Next Steps](#next-steps)
 - [Tests](#tests)
 - [Usage](#usage)
 	- [Core](#core)
