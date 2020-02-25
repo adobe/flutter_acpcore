@@ -8,6 +8,7 @@
 
 ## Contents
 - [Installation](#installation)
+- [Next Steps](#next-steps)
 - [Tests](#tests)
 - [Usage](#usage)
 	- [Core](#core)
@@ -29,6 +30,15 @@ Then fetch the packages with:
 ```bash
 flutter pub get
 ```
+
+#### Next steps
+
+After you have installed Core, you can install additional AEP Flutter extensions.
+
+| Extension    | Package                                            |
+| ------------ | ------------------------------------------------------------ |
+| Analytics    | [![pub package](https://img.shields.io/pub/v/flutter_acpanalytics.svg)](https://pub.dartlang.org/packages/flutter_acpanalytics) |
+| Griffon | [![pub package](https://img.shields.io/pub/v/flutter_griffon.svg)](https://pub.dartlang.org/packages/flutter_griffon) |
 
 ## Tests
 
@@ -101,7 +111,7 @@ import 'package:flutter_acpcore/flutter_acpcore.dart';
 ##### Getting Core version:
  ```dart
 String version = FlutterACPCore.extensionVersion;
-```
+ ```
 
 ##### Updating the SDK configuration:
 
