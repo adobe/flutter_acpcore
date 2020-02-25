@@ -1,3 +1,7 @@
+## 1.0.0-beta.3
+
+* Fix install instructions.
+
 ## 1.0.0-beta.2
 
 * Metadata updates.
