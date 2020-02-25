@@ -12,12 +12,12 @@ jobs:
           java-version: '12.x'
       - uses: subosito/flutter-action@v1
         with:
-          flutter-version: '1.12.2'
+          flutter-version: '1.12.13+hotfix.8'
           channel: 'stable'
 
       - name: Install dependencies
         working-directory: ./example
-        run: flutter upgrade && flutter pub get
+        run: flutter pub get
 
       - name: Build apk
         working-directory: ./example
