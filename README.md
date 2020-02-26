@@ -91,6 +91,8 @@ public void onCreate() {
 }
 ```
 
+> After you have added the initialization code to your app, be sure to review the offical [getting started docs](https://aep-sdks.gitbook.io/docs/getting-started/get-the-sdk).
+
 ##### Importing Core:
 ```dart
 import 'package:flutter_acpcore/flutter_acpcore.dart';
