@@ -38,60 +38,21 @@ flutter test
 
 ## Usage
 ### [Core](https://aep-sdks.gitbook.io/docs/using-mobile-extensions/mobile-core)
-##### Initializing the SDK:
 
-**iOS:**
+##### Initializing the SDK should be done in native code, documentation on how to initalize the SDK can be found [here](https://aep-sdks.gitbook.io/docs/getting-started/get-the-sdk#2-add-initialization-code).
 
-```objective-c
-// Import the SDK
-#import "ACPCore.h"
-#import "ACPLifecycle.h"
-#import "ACPIdentity.h"
-#import "ACPSignal.h"
+After you have added the initialization code to your app, be sure to set the SDK wrapper type to Flutter.
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-  //...
-  [ACPCore configureWithAppId:@"yourAppId"];
-  [ACPCore setWrapperType:ACPMobileWrapperTypeFlutter];
-  [ACPIdentity registerExtension];
-  [ACPLifecycle registerExtension];
-  [ACPSignal registerExtension];
-  // Register any additional extensions
-
-  [ACPCore start:nil];
-}
+###### iOS:
+```swift
+ACPCore.setWrapperType(.flutter)
 ```
 
-**Android:**
-
+###### Android
 ```java
-// Import the SDK
-import com.adobe.marketing.mobile.MobileCore;
-import com.adobe.marketing.mobile.Identity;
-import com.adobe.marketing.mobile.Lifecycle;
-import com.adobe.marketing.mobile.Signal;
-import com.adobe.marketing.mobile.WrapperType;
-
-@Override
-public void onCreate() {
-  //...
-  MobileCore.setApplication(this);
-  MobileCore.configureWithAppID("yourAppId");
-  // MobileCore.setWrapperType(WrapperType.FLUTTER); COMING SOON
-  try {
-    Identity.registerExtension();
-    Lifecycle.registerExtension();
-    Signal.registerExtension();
-    // Register any additional extensions
-  } catch (Exception e) {
-    // handle exception
-  }
-
-  MobileCore.start(null);
-}
+//MobileCore.setWrapperType(WrapperType.FLUTTER); COMING SOON
 ```
 
-> After you have added the initialization code to your app, be sure to review the offical [getting started docs](https://aep-sdks.gitbook.io/docs/getting-started/get-the-sdk).
 
 ##### Importing Core:
 ```dart
