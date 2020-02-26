@@ -41,7 +41,7 @@ flutter test
 
 ##### Initializing the SDK should be done in native code, documentation on how to initalize the SDK can be found [here](https://aep-sdks.gitbook.io/docs/getting-started/get-the-sdk#2-add-initialization-code).
 
-After you have added the initialization code to your app, be sure to set the SDK wrapper type to Flutter.
+After you have added the initialization code to your app, be sure to set the SDK wrapper type to Flutter before you start the SDK.
 
 ###### iOS:
 ```swift
