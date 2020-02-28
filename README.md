@@ -61,7 +61,7 @@ import 'package:flutter_acpcore/flutter_acpcore.dart';
 
 ##### Getting Core version:
  ```dart
-String version = FlutterACPCore.extensionVersion;
+String version = await FlutterACPCore.extensionVersion;
  ```
 
 ##### Updating the SDK configuration:
@@ -164,7 +164,7 @@ import 'package:flutter_acpcore/flutter_acpidentity.dart';
 
 ##### Getting Identity version:
 ```dart
-String version = FlutterACPIdentity.extensionVersion;
+String version = await FlutterACPIdentity.extensionVersion;
 ```
 
 ##### Sync Identifiers:
@@ -264,7 +264,7 @@ import 'package:flutter_acpcore/flutter_acplifecycle.dart';
 
 ##### Getting Lifecycle version:
  ```dart
-String version = FlutterACPLifecycle.extensionVersion;
+String version = await FlutterACPLifecycle.extensionVersion;
  ```
 
 ##### Starting a Lifecycle event:
@@ -285,7 +285,7 @@ import 'package:flutter_acpcore/flutter_acpsignal.dart';
 
 ##### Getting Signal version:
  ```dart
-String version = FlutterACPSignal.extensionVersion;
+String version = await FlutterACPSignal.extensionVersion;
  ```
 
 
