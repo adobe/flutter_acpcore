@@ -191,7 +191,7 @@ FlutterACPIdentity.syncIdentifiersWithAuthState({"idType1":"idValue1", "idType2"
 Note: `ACPMobileVisitorAuthenticationState` is defined as:
 
 ```dart
-enum ACPMobileVisitorAuthenticationState {unknown, authenticated, loggedOut}
+enum ACPMobileVisitorAuthenticationState {UNKNOWN, AUTHENTICATED, LOGGED_OUT}
 ```
 
 ##### Append visitor data to a URL:
