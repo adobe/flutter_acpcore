@@ -44,8 +44,14 @@ flutter test
 After you have added the initialization code to your app, be sure to set the SDK wrapper type to Flutter before you start the SDK.
 
 ###### iOS:
+Swift
 ```swift
 ACPCore.setWrapperType(.flutter)
+```
+
+Objective-C
+```objective-c
+[ACPCore setWrapperType:ACPMobileWrapperTypeFlutter];
 ```
 
 ###### Android
