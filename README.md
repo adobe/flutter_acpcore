@@ -56,7 +56,7 @@ Objective-C
 
 ###### Android
 ```java
-//MobileCore.setWrapperType(WrapperType.FLUTTER); COMING SOON
+MobileCore.setWrapperType(WrapperType.FLUTTER);
 ```
 
 
