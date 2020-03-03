@@ -37,28 +37,28 @@ flutter test
 ```
 
 ## Usage
-### [Core](https://aep-sdks.gitbook.io/docs/using-mobile-extensions/mobile-core)
 
-#### Initializing the SDK should be done in native code, documentation on how to initalize the SDK can be found [here](https://aep-sdks.gitbook.io/docs/getting-started/get-the-sdk#2-add-initialization-code). The linked documentation initalizes the User Profile extension which is not required or supported in Flutter.
+### Initializing the SDK
 
-After you have added the initialization code to your app, be sure to set the SDK wrapper type to Flutter before you start the SDK.
+Initializing the SDK should be done in native code, documentation on how to initalize the SDK can be found [here](https://aep-sdks.gitbook.io/docs/getting-started/get-the-sdk#2-add-initialization-code). The linked documentation initalizes the User Profile extension which is not required or supported in Flutter. Once you have added the initialization code to your app, be sure to set the SDK wrapper type to Flutter before you start the SDK.
 
 ###### iOS:
-Swift
+Swift:
 ```swift
 ACPCore.setWrapperType(.flutter)
 ```
 
-Objective-C
+Objective-C:
 ```objective-c
 [ACPCore setWrapperType:ACPMobileWrapperTypeFlutter];
 ```
 
-###### Android
+###### Android:
 ```java
 MobileCore.setWrapperType(WrapperType.FLUTTER);
 ```
 
+### [Core](https://aep-sdks.gitbook.io/docs/using-mobile-extensions/mobile-core)
 
 ##### Importing Core:
 ```dart
