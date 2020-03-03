@@ -10,6 +10,7 @@
 - [Installation](#installation)
 - [Tests](#tests)
 - [Usage](#usage)
+	- [Initializing](#initializing)
 	- [Core](#core)
 	- [Identity](#identity)
 	- [Lifecycle](#lifecycle)
@@ -38,9 +39,11 @@ flutter test
 
 ## Usage
 
-### Initializing the SDK
+### Initializing:
 
-Initializing the SDK should be done in native code, documentation on how to initalize the SDK can be found [here](https://aep-sdks.gitbook.io/docs/getting-started/get-the-sdk#2-add-initialization-code). The linked documentation initalizes the User Profile extension which is not required or supported in Flutter. Once you have added the initialization code to your app, be sure to set the SDK wrapper type to Flutter before you start the SDK.
+Initializing the SDK should be done in native code, documentation on how to initalize the SDK can be found [here](https://aep-sdks.gitbook.io/docs/getting-started/get-the-sdk#2-add-initialization-code). The linked documentation initalizes the User Profile extension which is not required or supported in Flutter. 
+
+Once you have added the initialization code to your app, be sure to set the SDK wrapper type to Flutter before you start the SDK.
 
 ###### iOS:
 Swift:
