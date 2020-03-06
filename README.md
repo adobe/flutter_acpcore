@@ -178,6 +178,8 @@ String version = await FlutterACPIdentity.extensionVersion;
 
 ##### Sync Identifier:
 ```dart
+import 'package:flutter_acpcore/src/acpmobile_visitor_id.dart';
+
 FlutterACPIdentity.syncIdentifier("identifierType", "identifier", ACPMobileVisitorAuthenticationState.AUTHENTICATED);
 ```
 
