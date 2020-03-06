@@ -176,6 +176,11 @@ import 'package:flutter_acpcore/flutter_acpidentity.dart';
 String version = await FlutterACPIdentity.extensionVersion;
 ```
 
+##### Sync Identifier:
+```dart
+FlutterACPIdentity.syncIdentifier("identifierType", "identifier", ACPMobileVisitorAuthenticationState.AUTHENTICATED);
+```
+
 ##### Sync Identifiers:
 ```dart
 FlutterACPIdentity.syncIdentifiers({"idType1":"idValue1",
@@ -187,7 +192,7 @@ FlutterACPIdentity.syncIdentifiers({"idType1":"idValue1",
 ```dart
 import 'package:flutter_acpcore/src/acpmobile_visitor_id.dart';
 
-FlutterACPIdentity.syncIdentifiersWithAuthState({"idType1":"idValue1", "idType2":"idValue2", "idType3":"idValue3"}, ACPMobileVisitorAuthenticationState.authenticated);
+FlutterACPIdentity.syncIdentifiersWithAuthState({"idType1":"idValue1", "idType2":"idValue2", "idType3":"idValue3"}, ACPMobileVisitorAuthenticationState.AUTHENTICATED);
 
 ```
 
