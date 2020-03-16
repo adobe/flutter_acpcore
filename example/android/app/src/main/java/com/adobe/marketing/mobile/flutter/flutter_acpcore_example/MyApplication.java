@@ -11,6 +11,7 @@ import com.adobe.marketing.mobile.Lifecycle;
 import com.adobe.marketing.mobile.LoggingMode;
 import com.adobe.marketing.mobile.MobileCore;
 import com.adobe.marketing.mobile.Signal;
+import com.adobe.marketing.mobile.WrapperType;
 
 import io.flutter.app.FlutterApplication;
 import io.flutter.plugin.common.PluginRegistry;
@@ -24,7 +25,8 @@ public class MyApplication extends FlutterApplication implements PluginRegistry.
 
         MobileCore.setApplication(this);
         MobileCore.setLogLevel(LoggingMode.VERBOSE);
-
+        MobileCore.setWrapperType(WrapperType.FLUTTER);
+        
         try {
             Identity.registerExtension();
             Lifecycle.registerExtension();
