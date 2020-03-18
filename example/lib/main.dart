@@ -170,10 +170,6 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
-  Future<void> lifecycleStart() async {
-    FlutterACPCore.lifecycleStart({"contextKey": "contextValue"});
-  }
-
   Future<void> setAdvertisingIdentifier() async {
     FlutterACPCore.setAdvertisingIdentifier("ad-id");
   }
@@ -301,14 +297,6 @@ class _MyAppState extends State<MyApp> {
                   child: Text("FlutterACPCore.updateConfiguration(...)"),
                   onPressed: () =>
                       FlutterACPCore.updateConfiguration({"key": "value"}),
-                ),
-                RaisedButton(
-                  child: Text("FlutterACPCore.lifecyclePause"),
-                  onPressed: () => FlutterACPCore.lifecyclePause(),
-                ),
-                RaisedButton(
-                  child: Text("FlutterACPCore.lifecycleStart(...)"),
-                  onPressed: () => lifecycleStart(),
                 ),
                 RaisedButton(
                   child: Text("FlutterACPCore.setAdvertisingIdentifier(...)"),

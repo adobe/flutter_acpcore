@@ -108,31 +108,6 @@ void main() {
     });
   });
 
-  group('lifecycleStart', () {
-    final Map<String, String> testContextData = {
-      "context1Key": "context1Value"
-    };
-    final List<MethodCall> log = <MethodCall>[];
-
-    setUp(() {
-      channel.setMockMethodCallHandler((MethodCall methodCall) async {
-        log.add(methodCall);
-        return null;
-      });
-    });
-
-    test('invokes correct method', () async {
-      await FlutterACPCore.lifecycleStart(testContextData);
-
-      expect(log, <Matcher>[
-        isMethodCall(
-          'lifecycleStart',
-          arguments: testContextData,
-        ),
-      ]);
-    });
-  });
-
   group('setAdvertisingIdentifier', () {
     final String testAdId = "test-aid";
     final List<MethodCall> log = <MethodCall>[];
@@ -398,28 +373,6 @@ void main() {
         isMethodCall(
           'updateConfiguration',
           arguments: testConfig,
-        ),
-      ]);
-    });
-  });
-
-  group('lifecyclePause', () {
-    final List<MethodCall> log = <MethodCall>[];
-
-    setUp(() {
-      channel.setMockMethodCallHandler((MethodCall methodCall) async {
-        log.add(methodCall);
-        return null;
-      });
-    });
-
-    test('invokes correct method', () async {
-      await FlutterACPCore.lifecyclePause();
-
-      expect(log, <Matcher>[
-        isMethodCall(
-          'lifecyclePause',
-          arguments: null,
         ),
       ]);
     });
