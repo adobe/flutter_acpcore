@@ -38,11 +38,6 @@ class FlutterACPCore {
         'track', {'type': 'state', 'name': state ?? "", 'data': data ?? {}});
   }
 
-  /// Submits a generic event to start/resume lifecycle collection with event type `generic.lifecycle`.
-  static Future<void> lifecycleStart(Map<String, String> contextData) {
-    return _channel.invokeMethod('lifecycleStart', contextData ?? {});
-  }
-
   /// Submits a generic event containing the provided IDFA with event type `generic.identity`.
   static Future<void> setAdvertisingIdentifier(String aid) async {
     return _channel.invokeMethod<void>('setAdvertisingIdentifier', aid ?? "");
@@ -116,19 +111,5 @@ class FlutterACPCore {
   /// @param  {Map<String, Object>} configMap configuration key/value pairs to be updated or added. A value of `null` has no effect.
   static Future<void> updateConfiguration(Map<String, Object> configMap) async {
     await _channel.invokeMethod('updateConfiguration', configMap ?? {});
-  }
-
-  /// Submits a generic event to pause lifecycle collection with event type `generic.lifecycle`.
-  ///
-  /// When using the Adobe Lifecycle extension, the following applies:
-  ///   - Pauses the current lifecycle session. Calling pause on an already paused session updates the paused timestamp,
-  ///     having the effect of resetting the session timeout timer. If no lifecycle session is running, then calling
-  ///     this method does nothing.
-  ///   - A paused session is resumed if ACPCore::lifecycleStart: is called before the session timeout. After
-  ///     the session timeout, a paused session is closed and calling ACPCore::lifecycleStart: will create
-  ///     a new session. The session timeout is defined by the `lifecycle.sessionTimeout` configuration parameter.
-  ///   - If not defined, the default session timeout is five minutes.
-  static Future<void> lifecyclePause() async {
-    await _channel.invokeMethod('lifecyclePause');
   }
 }

@@ -51,9 +51,6 @@ public class FlutterACPCorePlugin implements MethodCallHandler {
         } else if ("track".equals(call.method)) {
             handleTrackCall(call.arguments);
             result.success(null);
-        } else if ("lifecycleStart".equals(call.method)) {
-            handleLifecycleStart(call.arguments);
-            result.success(null);
         } else if ("setAdvertisingIdentifier".equals(call.method)) {
             handleSetAdvertisingIdentifier(call.arguments);
             result.success(null);
@@ -81,9 +78,6 @@ public class FlutterACPCorePlugin implements MethodCallHandler {
             result.success(null);
         } else if ("updateConfiguration".equals(call.method)) {
             handleUpdateConfiguration(call.arguments);
-            result.success(null);
-        } else if ("lifecyclePause".equals(call.method)) {
-            MobileCore.lifecyclePause();
             result.success(null);
         } else {
             result.notImplemented();
@@ -119,15 +113,6 @@ public class FlutterACPCorePlugin implements MethodCallHandler {
         } else if ("action".equals(type)) {
             MobileCore.trackAction(name, data);
         }
-    }
-
-    private void handleLifecycleStart(final Object arguments) {
-        if (!(arguments instanceof Map)) {
-            Log.e(TAG, "Track action failed because arguments were invalid");
-            return;
-        }
-
-        MobileCore.lifecycleStart((Map) arguments);
     }
 
     private void handleSetAdvertisingIdentifier(final Object arguments) {

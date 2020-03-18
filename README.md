@@ -271,27 +271,7 @@ class ACPMobileVisitorId {
 
 ### [Lifecycle](https://aep-sdks.gitbook.io/docs/using-mobile-extensions/mobile-core/lifecycle)
 
-> Note: Implementing Lifecycle via Dart may lead to inaccurate Lifecycle metrics, therefore we recommend implementing Lifecycle in native [Android and iOS code](https://aep-sdks.gitbook.io/docs/using-mobile-extensions/mobile-core/lifecycle). However, these APIs are still provided in Dart to support flexible Lifecycle implementations.
-
-##### Importing Lifecycle:
-```dart
-import 'package:flutter_acpcore/flutter_acplifecycle.dart';
-```
-
-##### Getting Lifecycle version:
- ```dart
-String version = await FlutterACPLifecycle.extensionVersion;
- ```
-
-##### Starting a Lifecycle event:
-```dart
-FlutterACPCore.lifecycleStart({"contextKey": "contextValue"});
-```
-
-##### Pausing a Lifecycle event:
-```dart
-FlutterACPCore.lifecyclePause();
-```
+> Note: It is required to implement Lifecycle in native [Android and iOS code](https://aep-sdks.gitbook.io/docs/using-mobile-extensions/mobile-core/lifecycle).
 
 ### [Signal](https://aep-sdks.gitbook.io/docs/using-mobile-extensions/mobile-core/signals)
 ##### Importing Signal:

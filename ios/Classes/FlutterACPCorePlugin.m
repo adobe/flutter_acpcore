@@ -42,10 +42,6 @@ governing permissions and limitations under the License.
         NSString *aid = call.arguments;
         [ACPCore setAdvertisingIdentifier:aid];
         result(nil);
-    } else if ([@"lifecycleStart" isEqualToString:call.method]) {
-        NSDictionary *contextData = call.arguments;
-        [ACPCore lifecycleStart:contextData];
-        result(nil);
     } else if ([@"dispatchEvent" isEqualToString:call.method]) {
         [self handleDispatchEvent:call result:result];
     } else if ([@"dispatchEventWithResponseCallback" isEqualToString:call.method]) {
@@ -63,9 +59,6 @@ governing permissions and limitations under the License.
     } else if ([@"updateConfiguration" isEqualToString:call.method]) {
         NSDictionary *configUpdate = call.arguments;
         [ACPCore updateConfiguration:configUpdate];
-        result(nil);
-    } else if ([@"lifecyclePause" isEqualToString:call.method]) {
-        [ACPCore lifecyclePause];
         result(nil);
     } else if ([@"setPrivacyStatus" isEqualToString:call.method]) {
         [ACPCore setPrivacyStatus:[FlutterACPCoreDataBridge privacyStatusFromString:call.arguments]];
