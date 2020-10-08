@@ -23,7 +23,7 @@ jobs:
 
   job2:
     name: Build iOS example app
-    runs-on: macos
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v1
 
