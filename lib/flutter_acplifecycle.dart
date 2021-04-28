@@ -19,8 +19,6 @@ class FlutterACPLifecycle {
       const MethodChannel('flutter_acplifecycle');
 
   /// Gets the current Lifecycle extension version.
-  static Future<String> get extensionVersion async {
-    final String version = await _channel.invokeMethod('extensionVersion');
-    return version;
-  }
+  static Future<String> get extensionVersion =>
+      _channel.invokeMethod<String>('extensionVersion').then((value) => value!);
 }

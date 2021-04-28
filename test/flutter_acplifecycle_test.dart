@@ -12,7 +12,6 @@ governing permissions and limitations under the License.
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_acpcore/flutter_acplifecycle.dart';
-import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   const MethodChannel channel = MethodChannel('flutter_acplifecycle');

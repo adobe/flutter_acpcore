@@ -10,20 +10,36 @@ governing permissions and limitations under the License.
 */
 
 /// This is used to indicate the authentication state for the current ACPMobileVisitorId
-class ACPMobileVisitorAuthenticationState {
-  final String value;
+///
+enum ACPMobileVisitorAuthenticationState { authenticated, logged_out, unknown }
 
-  const ACPMobileVisitorAuthenticationState(this.value);
+extension ACPMobileVisitorAuthenticationStateExt
+    on ACPMobileVisitorAuthenticationState {
+  String get value {
+    switch (this) {
+      case ACPMobileVisitorAuthenticationState.logged_out:
+        return 'ACP_VISITOR_AUTH_STATE_LOGGED_OUT';
+      case ACPMobileVisitorAuthenticationState.authenticated:
+        return 'ACP_VISITOR_AUTH_STATE_AUTHENTICATED';
+      case ACPMobileVisitorAuthenticationState.unknown:
+        return 'ACP_VISITOR_AUTH_STATE_UNKNOWN';
+    }
+  }
+}
 
-  static const ACPMobileVisitorAuthenticationState UNKNOWN =
-      const ACPMobileVisitorAuthenticationState(
-          "ACP_VISITOR_AUTH_STATE_UNKNOWN");
-  static const ACPMobileVisitorAuthenticationState AUTHENTICATED =
-      const ACPMobileVisitorAuthenticationState(
-          "ACP_VISITOR_AUTH_STATE_AUTHENTICATED");
-  static const ACPMobileVisitorAuthenticationState LOGGED_OUT =
-      const ACPMobileVisitorAuthenticationState(
-          "ACP_VISITOR_AUTH_STATE_LOGGED_OUT");
+extension ACPMobileVisitorAuthenticationStateValueExt on String {
+  ACPMobileVisitorAuthenticationState
+      get toACPMobileVisitorAuthenticationState {
+    switch (this) {
+      case 'ACP_VISITOR_AUTH_STATE_AUTHENTICATED':
+        return ACPMobileVisitorAuthenticationState.authenticated;
+      case 'ACP_VISITOR_AUTH_STATE_LOGGED_OUT':
+        return ACPMobileVisitorAuthenticationState.logged_out;
+      case 'ACP_VISITOR_AUTH_STATE_UNKNOWN':
+        return ACPMobileVisitorAuthenticationState.unknown;
+    }
+    throw Exception('Invalid ACPMobileVisitorAuthenticationState value: $this');
+  }
 }
 
 /// This is an identifier to be used with the Experience Cloud Visitor ID Service and it contains the origin, the identifier type, the identifier,, and the authentication state of the visitor ID.
@@ -33,13 +49,15 @@ class ACPMobileVisitorId {
   ACPMobileVisitorId(this._data);
 
   String get idOrigin => _data['idOrigin'];
+
   String get idType => _data['idType'];
+
   String get identifier => _data['identifier'];
+
   ACPMobileVisitorAuthenticationState get authenticationState =>
-      _data['authenticationState'];
+      (_data['authenticationState'] as String)
+          .toACPMobileVisitorAuthenticationState;
 
   @override
-  String toString() {
-    return '$runtimeType($_data)';
-  }
+  String toString() => '$runtimeType($_data)';
 }
