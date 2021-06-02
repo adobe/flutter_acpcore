@@ -20,60 +20,57 @@ class FlutterACPIdentity {
       const MethodChannel('flutter_acpidentity');
 
   /// Gets the current Identity extension version.
-  static Future<String> get extensionVersion async {
-    final String version = await _channel.invokeMethod('extensionVersion');
-    return version;
-  }
+  static Future<String> get extensionVersion async =>
+      await _channel.invokeMethod('extensionVersion');
 
   /// Appends Adobe visitor information to the query component of the specified URL.
-  static Future<String> appendToUrl(String url) async {
-    return _channel.invokeMethod('appendToUrl', url ?? "");
-  }
+  static Future<String> appendToUrl(String url) =>
+      _channel.invokeMethod<String>('appendToUrl', url).then((value) => value!);
 
   /// Returns all customer identifiers that were previously synced with the Adobe Experience Cloud.
-  static Future<List<ACPMobileVisitorId>> get identifiers async {
-    final List<dynamic> result = await _channel.invokeListMethod<dynamic>(
-      'getIdentifiers',
-    );
-    return result
-        ?.map<ACPMobileVisitorId>(
-          (dynamic data) => ACPMobileVisitorId(data),
-        )
-        ?.toList();
-  }
+  static Future<List<ACPMobileVisitorId>> get identifiers => _channel
+      .invokeListMethod<dynamic>(
+        'getIdentifiers',
+      )
+      .then((value) => (value ?? [])
+          .map<ACPMobileVisitorId>((data) => ACPMobileVisitorId(data))
+          .toList());
 
   /// Returns the Experience Cloud ID.
-  static Future<String> get experienceCloudId async {
-    final String id = await _channel.invokeMethod('getExperienceCloudId');
-    return id;
-  }
+  static Future<String> get experienceCloudId => _channel
+      .invokeMethod<String>('getExperienceCloudId')
+      .then((value) => value!);
 
   /// Updates the given customer ID with the Adobe Experience Cloud ID Service.
-  static Future<void> syncIdentifier(String identifierType, String identifier,
-      ACPMobileVisitorAuthenticationState authState) async {
-    await _channel.invokeMethod<void>('syncIdentifier', {
-      'identifierType': identifierType,
-      'identifier': identifier,
-      'authState': authState.value
-    });
-  }
+  static Future<void> syncIdentifier(
+    String identifierType,
+    String identifier,
+    ACPMobileVisitorAuthenticationState authState,
+  ) =>
+      _channel.invokeMethod<void>('syncIdentifier', {
+        'identifierType': identifierType,
+        'identifier': identifier,
+        'authState': authState.value
+      });
 
   /// Updates the given customer IDs with the Adobe Experience Cloud ID Service.
-  static Future<void> syncIdentifiers(Map<String, String> identifiers) async {
-    await _channel.invokeMethod<void>('syncIdentifiers', identifiers ?? {});
-  }
+  static Future<void> syncIdentifiers(Map<String, String> identifiers) =>
+      _channel.invokeMethod<void>('syncIdentifiers', identifiers);
 
   /// Updates the given customer IDs with the Adobe Experience Cloud ID Service.
   static Future<void> syncIdentifiersWithAuthState(
-      Map<String, String> identifiers,
-      ACPMobileVisitorAuthenticationState authState) async {
-    await _channel.invokeMethod<void>('syncIdentifiersWithAuthState',
-        {'identifiers': identifiers ?? {}, 'authState': authState.value});
-  }
+    Map<String, String> identifiers,
+    ACPMobileVisitorAuthenticationState authState,
+  ) =>
+      _channel.invokeMethod<void>(
+        'syncIdentifiersWithAuthState',
+        {
+          'identifiers': identifiers,
+          'authState': authState.value,
+        },
+      );
 
   /// Gets Visitor ID Service identifiers in URL query string form for consumption in hybrid mobile apps.
-  static Future<String> get urlVariables async {
-    final String urlVariables = await _channel.invokeMethod('urlVariables');
-    return urlVariables;
-  }
+  static Future<String> get urlVariables =>
+      _channel.invokeMethod<String>('urlVariables').then((value) => value!);
 }

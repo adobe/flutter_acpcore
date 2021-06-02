@@ -10,11 +10,11 @@ governing permissions and limitations under the License.
 */
 
 import 'package:flutter/services.dart';
+import 'package:flutter_acpcore/flutter_acpcore.dart';
+import 'package:flutter_acpcore/src/acpextension_event.dart';
 import 'package:flutter_acpcore/src/acpmobile_logging_level.dart';
 import 'package:flutter_acpcore/src/acpmobile_privacy_status.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_acpcore/flutter_acpcore.dart';
-import 'package:flutter_acpcore/src/acpextension_event.dart';
 
 void main() {
   const MethodChannel channel = MethodChannel('flutter_acpcore');
@@ -277,7 +277,7 @@ void main() {
     });
 
     test('returns correct result', () async {
-      String sdkIdentitiesResult = await FlutterACPCore.sdkIdentities;
+      String? sdkIdentitiesResult = await FlutterACPCore.sdkIdentities;
       expect(sdkIdentitiesResult, testSdkIdentities);
     });
   });
@@ -288,7 +288,7 @@ void main() {
     setUp(() {
       channel.setMockMethodCallHandler((MethodCall methodCall) async {
         log.add(methodCall);
-        return ACPPrivacyStatus.OPT_IN.value;
+        return ACPPrivacyStatus.opt_in.value;
       });
     });
 
@@ -305,12 +305,12 @@ void main() {
 
     test('returns correct result', () async {
       ACPPrivacyStatus privacyStatus = await FlutterACPCore.privacyStatus;
-      expect(privacyStatus.value, ACPPrivacyStatus.OPT_IN.value);
+      expect(privacyStatus.value, ACPPrivacyStatus.opt_in.value);
     });
   });
 
   group('setLogLevel', () {
-    final ACPLoggingLevel logLevel = ACPLoggingLevel.ERROR;
+    final ACPLoggingLevel logLevel = ACPLoggingLevel.error;
     final List<MethodCall> log = <MethodCall>[];
 
     setUp(() {
@@ -333,7 +333,7 @@ void main() {
   });
 
   group('setPrivacyStatus', () {
-    final ACPPrivacyStatus privacyStatus = ACPPrivacyStatus.OPT_IN;
+    final ACPPrivacyStatus privacyStatus = ACPPrivacyStatus.opt_in;
     final List<MethodCall> log = <MethodCall>[];
 
     setUp(() {
