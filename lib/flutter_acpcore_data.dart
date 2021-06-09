@@ -9,16 +9,7 @@ OF ANY KIND, either express or implied. See the License for the specific languag
 governing permissions and limitations under the License.
 */
 
-import 'dart:async';
-
-import 'package:flutter/services.dart';
-
-/// Adobe Experience Platform Signal API.
-class FlutterACPSignal {
-  static const MethodChannel _channel =
-      const MethodChannel('flutter_acpsignal');
-
-  /// Gets the current Signal extension version.
-  static Future<String> get extensionVersion =>
-      _channel.invokeMethod<String>('extensionVersion').then((value) => value!);
-}
+export 'package:flutter_acpcore/src/acpextension_event.dart';
+export 'package:flutter_acpcore/src/acpmobile_logging_level.dart';
+export 'package:flutter_acpcore/src/acpmobile_privacy_status.dart';
+export 'package:flutter_acpcore/src/acpmobile_visitor_id.dart';

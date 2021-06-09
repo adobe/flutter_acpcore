@@ -21,85 +21,93 @@ class FlutterACPCore {
   static const MethodChannel _channel = const MethodChannel('flutter_acpcore');
 
   /// Gets the current Core extension version.
-  static Future<String> get extensionVersion async {
-    final String version = await _channel.invokeMethod('extensionVersion');
-    return version;
-  }
+  static Future<String> get extensionVersion =>
+      _channel.invokeMethod<String>('extensionVersion').then((value) => value!);
 
   /// This method sends a generic Analytics action tracking hit with context data.
-  static Future<void> trackAction(String action, {Map<String, String> data}) {
-    return _channel.invokeMethod(
-        'track', {'type': 'action', 'name': action ?? "", 'data': data ?? {}});
-  }
+  static Future<void> trackAction(
+    String action, {
+    Map<String, String>? data,
+  }) =>
+      _channel.invokeMethod(
+        'track',
+        {
+          'type': 'action',
+          'name': action,
+          'data': data ?? {},
+        },
+      );
 
   /// This method sends a generic Analytics state tracking hit with context data.
-  static Future<void> trackState(String state, {Map<String, String> data}) {
-    return _channel.invokeMethod(
-        'track', {'type': 'state', 'name': state ?? "", 'data': data ?? {}});
-  }
+  static Future<void> trackState(
+    String state, {
+    Map<String, String>? data,
+  }) =>
+      _channel.invokeMethod(
+        'track',
+        {
+          'type': 'state',
+          'name': state,
+          'data': data ?? {},
+        },
+      );
 
   /// Submits a generic event containing the provided IDFA with event type `generic.identity`.
-  static Future<void> setAdvertisingIdentifier(String aid) async {
-    return _channel.invokeMethod<void>('setAdvertisingIdentifier', aid ?? "");
-  }
+  static Future<void> setAdvertisingIdentifier(String aid) =>
+      _channel.invokeMethod<void>('setAdvertisingIdentifier', aid);
 
   ///  Called by the extension public API to dispatch an event for other extensions or the internal SDK to consume. Any events dispatched by this call will not be processed until after `start` has been called.
-  static Future<bool> dispatchEvent(ACPExtensionEvent event) async {
-    final bool result =
-        await _channel.invokeMethod('dispatchEvent', event.data);
-    return result;
-  }
+  static Future<bool> dispatchEvent(ACPExtensionEvent event) => _channel
+      .invokeMethod<bool>('dispatchEvent', event.data)
+      .then((value) => value!);
 
   /// You should use this method when the Event being passed is a request and you expect an event in response. Any events dispatched by this call will not be processed until after `start` has been called.
   static Future<ACPExtensionEvent> dispatchEventWithResponseCallback(
-      ACPExtensionEvent event) async {
-    final Map<dynamic, dynamic> responseEventData = await _channel.invokeMethod(
-        'dispatchEventWithResponseCallback', event.data);
-    return ACPExtensionEvent(responseEventData);
-  }
+    ACPExtensionEvent event,
+  ) =>
+      _channel
+          .invokeMethod<Map<dynamic, dynamic>>(
+              'dispatchEventWithResponseCallback', event.data)
+          .then((value) => ACPExtensionEvent(value!));
 
   /// Dispatches a response event for a paired event that was sent to dispatchEventWithResponseCallback or received by an extension listener hear method.
   static Future<bool> dispatchResponseEvent(
-      ACPExtensionEvent responseEvent, ACPExtensionEvent requestEvent) async {
-    final bool result = await _channel.invokeMethod('dispatchResponseEvent', {
-      "responseEvent": responseEvent.data,
-      "requestEvent": requestEvent.data
-    });
-    return result;
-  }
+    ACPExtensionEvent responseEvent,
+    ACPExtensionEvent requestEvent,
+  ) =>
+      _channel.invokeMethod<bool>(
+        'dispatchResponseEvent',
+        {
+          "responseEvent": responseEvent.data,
+          "requestEvent": requestEvent.data
+        },
+      ).then((value) => value!);
 
   /// RulesEngine API to download and refresh rules from the server. (iOS only)
-  static Future<void> downloadRules() {
-    return _channel.invokeMethod('downloadRules');
-  }
+  static Future<void> downloadRules() => _channel.invokeMethod('downloadRules');
 
   /// Calls the provided callback with a JSON string containing all of the user's identities known by the SDK
   ///
   /// @return {String} known identifier as a JSON string
-  static Future<String> get sdkIdentities async {
-    String s = await _channel.invokeMethod('getSdkIdentities');
-    return s;
-  }
+  static Future<String> get sdkIdentities =>
+      _channel.invokeMethod<String>('getSdkIdentities').then((value) => value!);
 
   /// Get the current Adobe Mobile Privacy Status
-  static Future<ACPPrivacyStatus> get privacyStatus async {
-    String privacyStr = await _channel.invokeMethod('getPrivacyStatus');
-    return ACPPrivacyStatus(privacyStr);
-  }
+  static Future<ACPPrivacyStatus> get privacyStatus => _channel
+      .invokeMethod<String>('getPrivacyStatus')
+      .then((value) => value!.toACPPrivacyStatus);
 
   /// Set the logging level of the SDK
   ///
   /// @param {ACPMobileLogLevel} mode ACPMobileLogLevel to be used by the SDK
-  static Future<void> setLogLevel(ACPLoggingLevel mode) async {
-    await _channel.invokeMethod('setLogLevel', mode.value);
-  }
+  static Future<void> setLogLevel(ACPLoggingLevel mode) =>
+      _channel.invokeMethod('setLogLevel', mode.value);
 
   /// Set the Adobe Mobile Privacy status
   ///
   /// @param {ACPMobilePrivacyStatus} privacyStatus ACPMobilePrivacyStatus to be set to the SDK
-  static Future<void> setPrivacyStatus(ACPPrivacyStatus privacyStatus) async {
-    await _channel.invokeMethod('setPrivacyStatus', privacyStatus.value);
-  }
+  static Future<void> setPrivacyStatus(ACPPrivacyStatus privacyStatus) =>
+      _channel.invokeMethod('setPrivacyStatus', privacyStatus.value);
 
   /// Update specific configuration parameters
   ///
@@ -109,7 +117,6 @@ class FlutterACPCore {
   /// Using `null` values is allowed and effectively removes the configuration parameter from the current configuration.
   ///
   /// @param  {Map<String, Object>} configMap configuration key/value pairs to be updated or added. A value of `null` has no effect.
-  static Future<void> updateConfiguration(Map<String, Object> configMap) async {
-    await _channel.invokeMethod('updateConfiguration', configMap ?? {});
-  }
+  static Future<void> updateConfiguration(Map<String, Object> configMap) =>
+      _channel.invokeMethod('updateConfiguration', configMap);
 }

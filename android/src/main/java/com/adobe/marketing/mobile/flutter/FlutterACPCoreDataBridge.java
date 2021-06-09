@@ -12,9 +12,9 @@ governing permissions and limitations under the License.
 
 package com.adobe.marketing.mobile.flutter;
 
+import com.adobe.marketing.mobile.Event;
 import com.adobe.marketing.mobile.LoggingMode;
 import com.adobe.marketing.mobile.MobilePrivacyStatus;
-import com.adobe.marketing.mobile.Event;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -45,7 +45,10 @@ public class FlutterACPCoreDataBridge {
      * @return An {@link Event}
      */
     static Event eventFromMap(final Map map) {
-        Event event = new Event.Builder(getNullableString(map, EVENT_NAME_KEY), getNullableString(map, EVENT_TYPE_KEY), getNullableString(map, EVENT_SOURCE_KEY))
+        Event event = new Event.Builder(
+                getNullableString(map, EVENT_NAME_KEY),
+                getNullableString(map, EVENT_TYPE_KEY),
+                getNullableString(map, EVENT_SOURCE_KEY))
                 .setEventData(getNullableMap(map, EVENT_DATA_KEY))
                 .build();
         return event;
@@ -83,13 +86,13 @@ public class FlutterACPCoreDataBridge {
     public static String stringFromLoggingMode(final LoggingMode logMode) {
         switch (logMode) {
             case ERROR:
-                return  ACP_LOG_LEVEL_ERROR;
+                return ACP_LOG_LEVEL_ERROR;
             case WARNING:
-                return  ACP_LOG_LEVEL_WARNING;
+                return ACP_LOG_LEVEL_WARNING;
             case DEBUG:
-                return  ACP_LOG_LEVEL_DEBUG;
+                return ACP_LOG_LEVEL_DEBUG;
             case VERBOSE:
-                return  ACP_LOG_LEVEL_VERBOSE;
+                return ACP_LOG_LEVEL_VERBOSE;
         }
 
         return ACP_LOG_LEVEL_DEBUG;

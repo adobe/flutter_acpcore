@@ -24,28 +24,43 @@ import com.adobe.marketing.mobile.MobilePrivacyStatus;
 import java.util.HashMap;
 import java.util.Map;
 
+import androidx.annotation.NonNull;
+import io.flutter.embedding.engine.plugins.FlutterPlugin;
 import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
 import io.flutter.plugin.common.MethodChannel.Result;
-import io.flutter.plugin.common.PluginRegistry.Registrar;
 
-public class FlutterACPCorePlugin implements MethodCallHandler {
+public class FlutterACPCorePlugin implements FlutterPlugin, MethodCallHandler {
 
-    private String TAG = "FlutterACPCorePlugin";
-    private String ACPCORE_TAG = "ACPCORE";
+    private final String TAG = "FlutterACPCorePlugin";
+    private MethodChannel channel;
+    private final FlutterACPIdentityPlugin flutterACPIdentityPlugin = new FlutterACPIdentityPlugin();
+    private final FlutterACPLifecyclePlugin flutterACPLifecyclePlugin = new FlutterACPLifecyclePlugin();
+    private final FlutterACPSignalPlugin flutterACPSignalPlugin = new FlutterACPSignalPlugin();
 
-    public static void registerWith(Registrar registrar) {
-        final MethodChannel channel = new MethodChannel(registrar.messenger(), "flutter_acpcore");
+    @Override
+    public void onAttachedToEngine(@NonNull final FlutterPluginBinding binding) {
+        channel = new MethodChannel(binding.getBinaryMessenger(), "flutter_acpcore");
         channel.setMethodCallHandler(new FlutterACPCorePlugin());
-
-        FlutterACPIdentityPlugin.registerWith(registrar);
-        FlutterACPLifecyclePlugin.registerWith(registrar);
-        FlutterACPSignalPlugin.registerWith(registrar);
+        flutterACPIdentityPlugin.onAttachedToEngine(binding);
+        flutterACPLifecyclePlugin.onAttachedToEngine(binding);
+        flutterACPSignalPlugin.onAttachedToEngine(binding);
     }
 
     @Override
-    public void onMethodCall(MethodCall call, Result result) {
+    public void onDetachedFromEngine(@NonNull final FlutterPluginBinding binding) {
+        if (channel != null) {
+            channel.setMethodCallHandler(null);
+        }
+        flutterACPIdentityPlugin.onDetachedFromEngine(binding);
+        flutterACPLifecyclePlugin.onDetachedFromEngine(binding);
+        flutterACPSignalPlugin.onDetachedFromEngine(binding);
+    }
+
+    @Override
+    public void onMethodCall(MethodCall call, @NonNull Result result) {
+        final String ACPCORE_TAG = "ACPCORE";
         if ("extensionVersion".equals(call.method)) {
             result.success(MobileCore.extensionVersion());
         } else if ("track".equals(call.method)) {

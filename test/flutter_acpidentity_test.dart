@@ -10,7 +10,6 @@ governing permissions and limitations under the License.
 */
 
 import 'package:flutter/services.dart';
-import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_acpcore/flutter_acpidentity.dart';
 import 'package:flutter_acpcore/src/acpmobile_visitor_id.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -146,7 +145,7 @@ void main() {
     final String testIdType = "testType";
     final String testId = "testId";
     final ACPMobileVisitorAuthenticationState testState =
-        ACPMobileVisitorAuthenticationState.UNKNOWN;
+        ACPMobileVisitorAuthenticationState.unknown;
 
     final List<MethodCall> log = <MethodCall>[];
 
@@ -208,7 +207,7 @@ void main() {
       "idType3": "idValue3"
     };
     final ACPMobileVisitorAuthenticationState testState =
-        ACPMobileVisitorAuthenticationState.LOGGED_OUT;
+        ACPMobileVisitorAuthenticationState.logged_out;
 
     final List<MethodCall> log = <MethodCall>[];
 

@@ -10,15 +10,31 @@ governing permissions and limitations under the License.
 */
 
 // This class is used to set the privacy status
-class ACPPrivacyStatus {
-  final String value;
+enum ACPPrivacyStatus { opt_in, opt_out, unknown }
 
-  const ACPPrivacyStatus(this.value);
+extension ACPPrivacyStatusExt on ACPPrivacyStatus {
+  String get value {
+    switch (this) {
+      case ACPPrivacyStatus.opt_in:
+        return 'ACP_PRIVACY_STATUS_OPT_IN';
+      case ACPPrivacyStatus.opt_out:
+        return 'ACP_PRIVACY_STATUS_OPT_OUT';
+      case ACPPrivacyStatus.unknown:
+        return 'ACP_PRIVACY_STATUS_UNKNOWN';
+    }
+  }
+}
 
-  static const ACPPrivacyStatus OPT_IN =
-      const ACPPrivacyStatus("ACP_PRIVACY_STATUS_OPT_IN");
-  static const ACPPrivacyStatus OPT_OUT =
-      const ACPPrivacyStatus("ACP_PRIVACY_STATUS_OPT_OUT");
-  static const ACPPrivacyStatus UNKNOWN =
-      const ACPPrivacyStatus("ACP_PRIVACY_STATUS_UNKNOWN");
+extension ACPPrivacyStatusValueExt on String {
+  ACPPrivacyStatus get toACPPrivacyStatus {
+    switch (this) {
+      case 'ACP_PRIVACY_STATUS_OPT_IN':
+        return ACPPrivacyStatus.opt_in;
+      case 'ACP_PRIVACY_STATUS_OPT_OUT':
+        return ACPPrivacyStatus.opt_out;
+      case 'ACP_PRIVACY_STATUS_UNKNOWN':
+        return ACPPrivacyStatus.unknown;
+    }
+    throw Exception('Invalid ACPPrivacyStatus value: $this');
+  }
 }
