@@ -41,6 +41,12 @@ flutter test
 
 Initializing the SDK should be done in native code, documentation on how to initalize the SDK can be found [here](https://aep-sdks.gitbook.io/docs/getting-started/get-the-sdk#2-add-initialization-code). The linked documentation initalizes the User Profile extension which is not required or supported in Flutter. 
 
+#### iOS: 
+Add the initialization code in [AppDelegate.m or AppDelegate.swift](https://github.com/adobe/flutter_acpcore/blob/master/example/ios/Runner/AppDelegate.m#L13) file of the generated iOS project.
+
+#### Android: 
+Create an [Application class](https://github.com/adobe/flutter_acpcore/blob/master/example/android/app/src/main/java/com/adobe/marketing/mobile/flutter/flutter_acpcore_example/MyApplication.java) which extends [FlutterApplication](https://api.flutter.dev/javadoc/io/flutter/app/FlutterApplication.html) and add the initialization code. Change your [AndroidManifest.xml](https://github.com/adobe/flutter_acpcore/blob/master/example/android/app/src/main/AndroidManifest.xml#L9) to reference this new class. 
+
 Once you have added the initialization code to your app, be sure to set the SDK wrapper type to Flutter before you start the SDK.
 
 ###### iOS:
