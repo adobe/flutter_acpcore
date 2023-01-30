@@ -15,6 +15,15 @@ For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 
+## Demo
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/48197516/215500008-eb06534e-fc15-4cdb-ba0a-043e2dbf3cba.png" width="300" title="Simulator Screen Shot - iPhone 12 Pro Max - 2023-01-30 at 08 09 12">
+
+  <img src="https://user-images.githubusercontent.com/48197516/215501285-2f38d658-d6cc-4b97-932c-3cf18b79e6ea.png" width="300" title="Simulator Screen Shot - iPhone 12 Pro Max - 2023-01-30 at 08 13 35">
+</p>
+
+
 
 ## How to run the example app:
 
