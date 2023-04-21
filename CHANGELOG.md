@@ -12,7 +12,7 @@
 
 ## 1.0.0-beta.6
 
-* Lifecycle API's have been removed from Dart, to implement Lifecycle please use the native API's: https://aep-sdks.gitbook.io/docs/using-mobile-extensions/mobile-core/lifecycle
+* Lifecycle API's have been removed from Dart, to implement Lifecycle please use the native API's: https://developer.adobe.com/client-sdks/previous-versions/documentation/mobile-core/lifecycle/
 
 ## 1.0.0-beta.5
 

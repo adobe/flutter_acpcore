@@ -2,7 +2,7 @@
 
 [![pub package](https://img.shields.io/pub/v/flutter_acpcore.svg)](https://pub.dartlang.org/packages/flutter_acpcore) ![Build](https://github.com/adobe/flutter_acpcore/workflows/Dart%20Unit%20Tests%20+%20Android%20Build%20+%20iOS%20Build/badge.svg) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-`flutter_acpcore` is a flutter plugin for the iOS and Android [AEP Core SDK](https://aep-sdks.gitbook.io/docs/using-mobile-extensions/mobile-core) to allow for integration with flutter applications. Functionality to enable the Core extension is provided entirely through Dart documented below.
+`flutter_acpcore` is a flutter plugin for the iOS and Android [AEP Core SDK](https://developer.adobe.com/client-sdks/previous-versions/documentation/mobile-core/) to allow for integration with flutter applications. Functionality to enable the Core extension is provided entirely through Dart documented below.
 
 ## Contents
 - [Installation](#installation)
@@ -39,7 +39,7 @@ flutter test
 
 ### Initializing:
 
-Initializing the SDK should be done in native code, documentation on how to initalize the SDK can be found [here](https://aep-sdks.gitbook.io/docs/getting-started/get-the-sdk#2-add-initialization-code). The linked documentation initalizes the User Profile extension which is not required or supported in Flutter. 
+Initializing the SDK should be done in native code, documentation on how to initalize the SDK can be found [here](https://developer.adobe.com/client-sdks/previous-versions/documentation/mobile-core/api-reference/#registerextensions). The linked documentation initalizes the User Profile extension which is not required or supported in Flutter. 
 
 #### iOS: 
 Add the initialization code in [AppDelegate.m or AppDelegate.swift](https://github.com/adobe/flutter_acpcore/blob/master/example/ios/Runner/AppDelegate.m#L13) file of the generated iOS project.
@@ -65,7 +65,7 @@ Objective-C:
 MobileCore.setWrapperType(WrapperType.FLUTTER);
 ```
 
-### [Core](https://aep-sdks.gitbook.io/docs/using-mobile-extensions/mobile-core)
+### [Core](https://developer.adobe.com/client-sdks/previous-versions/documentation/mobile-core/)
 
 ##### Importing Core:
 ```dart
@@ -169,7 +169,7 @@ try {
 }
 ```
 
-### [Identity](https://aep-sdks.gitbook.io/docs/using-mobile-extensions/mobile-core/identity)
+### [Identity](https://developer.adobe.com/client-sdks/previous-versions/documentation/mobile-core/identity/)
 ##### Importing Identity:
 ```dart
 import 'package:flutter_acpcore/flutter_acpidentity.dart';
@@ -273,11 +273,11 @@ class ACPMobileVisitorId {
 }
 ```
 
-### [Lifecycle](https://aep-sdks.gitbook.io/docs/using-mobile-extensions/mobile-core/lifecycle)
+### [Lifecycle](https://developer.adobe.com/client-sdks/previous-versions/documentation/mobile-core/lifecycle/)
 
-> Note: It is required to implement Lifecycle in native [Android and iOS code](https://aep-sdks.gitbook.io/docs/using-mobile-extensions/mobile-core/lifecycle).
+> Note: It is required to implement Lifecycle in native [Android and iOS code]https://developer.adobe.com/client-sdks/previous-versions/documentation/mobile-core/lifecycle/).
 
-### [Signal](https://aep-sdks.gitbook.io/docs/using-mobile-extensions/mobile-core/signals)
+### [Signal](https://developer.adobe.com/client-sdks/previous-versions/documentation/mobile-core/signal/)
 ##### Importing Signal:
 ```dart
 import 'package:flutter_acpcore/flutter_acpsignal.dart';
